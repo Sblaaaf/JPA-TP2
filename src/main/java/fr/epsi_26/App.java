@@ -31,6 +31,26 @@ public class App {
             System.out.println(">>> Livre 5 introuvable !");
         }
 
+        // JPQL - par Titre
+        String titreRecherche = "Germinal";
+        TypedQuery<Livre> queryTitre = em.createQuery("SELECT l FROM Livre l WHERE l.titre = :titre", Livre.class);
+        queryTitre.setParameter("titre", titreRecherche);
+
+        List<Livre> livreParTitre = queryTitre.getResultList();
+        System.out.println("Recherche JPQL par titre (" + titreRecherche + ") :");
+        System.out.println(" - " + livreParTitre);
+
+        // JPQL - par Auteur
+        String auteurRecherche = "Gaston Pouet";
+        TypedQuery<Livre> queryAuteur = em.createQuery("SELECT l FROM Livre l WHERE l.auteur = :auteur", Livre.class);
+        queryAuteur.setParameter("auteur", auteurRecherche);
+
+        List<Livre> livresParAuteur = queryAuteur.getResultList();
+        System.out.println("Recherche JPQL par auteur (" + auteurRecherche + ") :");
+        for (Livre l : livresParAuteur) {
+            System.out.println(" - " + l.getTitre());
+        }
+
         // DELETE
         Livre livreASupprimer = em.find(Livre.class, 3);
         if (livreASupprimer != null) {
