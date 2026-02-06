@@ -41,7 +41,7 @@ public class Livre implements Serializable {
     public String getAuteur() { return auteur; }
     public void setAuteur(String auteur) { this.auteur = auteur; }
 
-    // Getter et Setter pour emprunts
+    // Getter et Setter pour emprunts (bidirectionnelle)
     public Set<Emprunt> getEmprunts() {
         return emprunts;
     }
