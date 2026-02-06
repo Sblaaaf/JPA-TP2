@@ -2,8 +2,8 @@ package fr.epsi_26;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "CLIENT")
@@ -25,7 +25,6 @@ public class Client implements Serializable {
     private Set<Emprunt> emprunts;
 
     public Client() {
-        this.emprunts = new HashSet<>();
     }
 
     public Client(String nom, String prenom) {

@@ -3,7 +3,6 @@ package fr.epsi_26;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,7 +30,8 @@ public class Emprunt implements Serializable {
 
     // Relation ManyToMany : Un emprunt contient plusieurs livres
     @ManyToMany
-    @JoinTable(name = "COMPO",
+    @JoinTable(
+            name = "COMPO",
             joinColumns = @JoinColumn(name = "ID_EMP"),
             inverseJoinColumns = @JoinColumn(name = "ID_LIV")
     )
@@ -39,7 +39,6 @@ public class Emprunt implements Serializable {
 
     // Constructeur vide
     public Emprunt() {
-        this.livres = new HashSet<>();
     }
 
     // Getters et Setters
