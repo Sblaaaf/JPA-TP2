@@ -30,7 +30,17 @@ public class App {
             System.out.println(">>> Livre 5 introuvable !");
         }
 
+        // DELETE
+        Livre livreASupprimer = em.find(Livre.class, 3);
+        if (livreASupprimer != null) {
+            em.remove(livreASupprimer);
+            System.out.println(">>> Livre 3 supprimé avec succès.");
+        } else {
+            System.out.println(">>> Livre 3 introuvable, déjà supprimé ?");
+        }
+
         em.getTransaction().commit();
+
         em.close();
         emf.close();
     }
