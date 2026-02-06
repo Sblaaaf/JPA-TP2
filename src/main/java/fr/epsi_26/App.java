@@ -1,6 +1,7 @@
 package fr.epsi_26;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -40,6 +41,15 @@ public class App {
         }
 
         em.getTransaction().commit();
+
+        // Afficher la liste
+        TypedQuery<Livre> queryAll = em.createQuery("SELECT l FROM Livre l", Livre.class);
+        List<Livre> tousLesLivres = queryAll.getResultList();
+
+        System.out.println("_LISTE DES LIVRES_");
+        for (Livre l : tousLesLivres) {
+            System.out.println(l.getId() + " : " + l.getTitre() + " - " + l.getAuteur());
+        }
 
         em.close();
         emf.close();
